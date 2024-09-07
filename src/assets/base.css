@@ -19,6 +19,10 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --text-base: 15px;
+  --text-heading-secondary: calc(var(--text-base) * 1.3);
+  --text-heading: calc(var(--text-heading-secondary) * 2);
 }
 
 /* semantic color variables for this project */
@@ -79,8 +83,25 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: var(--text-base);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: var(--text-heading);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--text-heading-secondary);
+}
+
+p,
+span {
+  font-size: var(--text-base);
 }
