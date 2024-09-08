@@ -54,6 +54,13 @@
   }
 }
 
+.default-scheme {
+  --light-cell: #f0d9b5;
+  --dark-cell: #b58863;
+  --light-piece: #f8f9fa;
+  --dark-piece: #343a40;
+}
+
 *,
 *::before,
 *::after {
