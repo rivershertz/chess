@@ -1,19 +1,20 @@
 <template>
   <div class="board">
-    <span v-for="row in rows" :key="row" class="row">
-      <span v-for="cell in 8" :key="cell" class="cell"><span class="cell-coordinate" /></span>
+    <span v-for="row in playerStore.formattedRows" :key="row" class="row">
+      <span v-for="cell in 8" :key="cell" class="cell" />
     </span>
-    <ul class="notation notation-right">
-      <li v-for="row in rows" :key="row">{{ row }}</li>
+    <ul class="notation notation-left">
+      <li v-for="row in playerStore.formattedRows" :key="row">{{ row }}</li>
     </ul>
     <ul class="notation notation-bottom">
-      <li v-for="column in 8" :key="column">{{ column }}</li>
+      <li v-for="column in playerStore.formattedColumns" :key="column">{{ column }}</li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+import { usePlayerStore } from '@/stores/player'
+const playerStore = usePlayerStore()
 </script>
 
 <style scoped>
@@ -57,13 +58,13 @@ const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
   padding: 0;
 }
 
-.notation-right {
+.notation-left {
   height: 100%;
-  left: 100%;
+  right: 100%;
   display: grid;
   place-items: center;
   text-transform: capitalize;
-  padding-left: var(--notation-padding);
+  padding-right: var(--notation-padding);
 }
 
 .notation-bottom {
