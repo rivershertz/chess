@@ -1,20 +1,20 @@
 <template>
   <div class="board">
-    <span v-for="row in playerStore.formattedRows" :key="row" class="row">
+    <span v-for="row in formattedRows" :key="row" class="row">
       <span v-for="cell in 8" :key="cell" class="cell" />
     </span>
     <ul class="notation notation-left">
-      <li v-for="row in playerStore.formattedRows" :key="row">{{ row }}</li>
+      <li v-for="row in formattedRows" :key="row">{{ row }}</li>
     </ul>
     <ul class="notation notation-bottom">
-      <li v-for="column in playerStore.formattedColumns" :key="column">{{ column }}</li>
+      <li v-for="column in formattedColumns" :key="column">{{ column }}</li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
 import { usePlayerStore } from '@/stores/player'
-const playerStore = usePlayerStore()
+const { formattedColumns, formattedRows } = usePlayerStore()
 </script>
 
 <style scoped>
