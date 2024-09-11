@@ -23,6 +23,8 @@
   --text-base: 15px;
   --text-heading-secondary: calc(var(--text-base) * 1.3);
   --text-heading: calc(var(--text-heading-secondary) * 2);
+
+  --notation-padding: 1.5rem;
 }
 
 /* semantic color variables for this project */

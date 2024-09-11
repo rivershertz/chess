@@ -1,14 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+</script>
 
 <template>
   <main class="default-scheme">
-    <h1>Home</h1>
     <div class="board">
-      <span v-for="row in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']" :key="row" class="row">
-        <span v-for="cell in 8" :key="cell" class="cell"
-          ><span class="cell-coordinate">{{ cell }}</span></span
-        >
+      <span v-for="row in rows" :key="row" class="row">
+        <span v-for="cell in 8" :key="cell" class="cell"><span class="cell-coordinate" /></span>
       </span>
+      <ul class="notation notation-right">
+        <li v-for="row in rows" :key="row">{{ row }}</li>
+      </ul>
+      <ul class="notation notation-bottom">
+        <li v-for="column in 8" :key="column">{{ column }}</li>
+      </ul>
     </div>
   </main>
 </template>
@@ -16,11 +21,12 @@
 <style scoped>
 .board {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 15vh auto 0 auto;
   display: grid;
   grid-template-rows: repeat(8, 1fr);
   aspect-ratio: 1;
   place-items: center;
+  position: relative;
 }
 
 .row {
@@ -47,15 +53,28 @@
   color: var(--dark-cell);
 }
 
-.cell-coordinate {
-  display: none;
+.notation {
+  position: absolute;
+  list-style: none;
+  padding: 0;
 }
 
-.row:last-child .cell-coordinate {
-  display: block;
+.notation-right {
+  height: 100%;
+  left: 100%;
+  display: grid;
+  place-items: center;
+  text-transform: capitalize;
+  padding-left: var(--notation-padding);
 }
 
-.cell:last-child .cell-coordinate {
-  display: block;
+.notation-bottom {
+  width: 100%;
+  top: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  place-items: center;
+  text-transform: capitalize;
+  padding-top: var(--notation-padding);
 }
 </style>
